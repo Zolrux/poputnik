@@ -1,0 +1,34 @@
+@import url('./fonts.css');
+@import url('./reset.css');
+@import url('./base.css');
+
+@import url('./header.css');
+
+.driver-trips__title {
+  font-size: 32px;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.driver-trips__body {
+	max-width: 523px;
+	margin: 0 auto;
+}
+
+.trips__list-profile .trips-list__item {
+	grid-template-columns: repeat(2, 1fr);
+}
+
+.trips__list-profile .trips-list__column:last-child {
+	padding-left: 37px;
+	text-align: center;
+	align-self: center;
+}
+
+.trips__list-profile .trips-list__column:last-child:after {
+	display: none;
+}
+.trips-list__driver {
+	font-size: 14px;
+}

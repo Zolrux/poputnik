@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/css/auth.css">
+	<title>Авторизація</title>
+</head>
+<body>
+	<div class="wrapper">
+		<main class="main">
+			<section class="auth">
+				<div class="auth__container">
+					<div class="auth__body">
+						<div class="auth__login">
+							<h2 class="auth__title">Авторизація</h2>
+							<form action="/auth/login" method="POST" class="auth__form-login form-login">
+								<input type="email" name="email" class="form-login__input" placeholder="Електронна пошта" value="<%- 'email' in fields ? fields.email : '' %>">
+								<input type="password" name="password" class="form-login__input" placeholder="Пароль" value="<%- 'password' in fields ? fields.password : '' %>">
+								<button type="submit" class="form-login__submit">Авторизуватися</button>
+								<% if (errors.length) { %>
+									<div class="errors">
+										<% errors.forEach(function(errorMsg) { %>
+											<div class="errors__msg"><%- errorMsg %></div>
+										<% }) %>
+									</div>
+								<% } %>
+							</form>
+						</div>
+					</div>
+					<a href="/auth/register" class="auth__link">Реєстрація</a>
+				</div>
+			</section>
+		</main>
+	</div>
+</body>
+</html>

@@ -1,0 +1,145 @@
+@import url('./fonts.css');
+@import url('./reset.css');
+@import url('./base.css');
+
+@import url('./header.css');
+
+.trips {
+  padding: 50px 0;
+}
+.trips__container {
+}
+.trips__title {
+  font-size: 32px;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 84px;
+}
+.trips__body {
+  max-width: 670px;
+  margin: 0 auto;
+}
+.trips__text {
+	font-size: 24px;
+	text-align: center;
+	margin-bottom: 35px;
+}
+.trips__text a {
+	text-decoration: underline;
+}
+.trips__list {
+}
+
+.modal-trips {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+.modal-trips.active {
+  z-index: 99;
+}
+.modal-trips__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.6s ease 0s;
+}
+.modal-trips.active .modal-trips__overlay {
+  opacity: 1;
+  visibility: visible;
+}
+.modal-trips__body {
+  max-width: 600px;
+  width: 100%;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffe4b1;
+  position: relative;
+  z-index: 100;
+  transition: all 0.6s ease 0s;
+  transform: translateY(-100vh);
+}
+.modal-trips.active .modal-trips__body {
+	transform: translateY(0);
+}
+.modal-trips__inner { 
+  max-width: 330px;
+}
+.modal-trips__title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 44px;
+}
+.modal-trips__counter {
+  display: flex;
+  align-items: center;
+  column-gap: 47px;
+  margin-bottom: 22px;
+}
+.modal-trips__counter-info {
+  font-weight: 500;
+}
+.modal-trips__counter-panel {
+  display: flex;
+  align-items: center;
+  column-gap: 14px;
+}
+.modal-trips__counter-increment,
+.modal-trips__counter-decrement,
+.modal-trips__counter-value {
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  background-color: #fafafa;
+  font-weight: 500;
+}
+.modal-trips__counter-increment {
+}
+.modal-trips__counter-value {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal-trips__counter-decrement {
+}
+.modal-trips__price {
+  display: flex;
+  align-items: center;
+  column-gap: 14px;
+  margin-bottom: 36px;
+}
+.modal-trips__price-info {
+  font-weight: 500;
+}
+.modal-trips__price-value {
+  font-weight: 500;
+}
+.modal-trips__counter-value::after {
+	content: attr(data-places-value);
+}
+.modal-trips__price-value span {
+  color: #2a9ef4;
+}
+.modal-trips__btn {
+  display: block;
+  border-radius: 40px;
+  background: #b3dcfa;
+  padding: 10px 17px;
+  margin: 0 auto;
+}

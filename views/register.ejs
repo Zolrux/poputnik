@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/css/auth.css">
+	<title>Реєстрація</title>
+</head>
+<body>
+	<div class="wrapper">
+		<main class="main">
+			<section class="auth">
+				<div class="auth__container">
+					<div class="auth__body">
+						<div class="auth__register">
+							<h2 class="auth__title">Реєстрація</h2>
+							<form action="/auth/register" method="POST" class="auth__form-register form-register">
+								<input type="text" name="name" class="form-register__input" placeholder="Ім'я" value="<%- 'name' in fields ? fields.name : '' %>">
+								<input type="text" name="surname" class="form-register__input" placeholder="Прізвище" value="<%- 'surname' in fields ? fields.surname : '' %>">
+								<input type="number" name="age" class="form-register__input" placeholder="Вік" min="1">
+								<input type="email" name="email" class="form-register__input" placeholder="Електронна пошта" value="<%- 'email' in fields ? fields.email : '' %>">
+								<input type="password" name="password" class="form-register__input" placeholder="Пароль" value="<%- 'password' in fields ? fields.password : '' %>">
+								<label for="checkbox" class="form-register__label">
+									<input type="checkbox" name="isDriver" name="isDriver" id="checkbox" <%- 'isDriver' in fields && fields.isDriver ? 'checked' : '' %>>
+									Зарєструватися як водій
+								</label>
+								<button type="submit" class="form-register__submit">Зареєструватися</button>
+								<% if (errors.length) { %>
+								<div class="errors">
+									<% errors.forEach(function(errorMsg) { %>
+										<div class="errors__msg"><%- errorMsg %></div>
+									<% }) %>
+								</div>
+								<% } %>
+							</form>
+						</div>
+					</div>
+					<a href="/auth/login" class="auth__link">Авторизація</a>
+				</div>
+			</section>
+		</main>
+	</div>
+</body>
+</html>

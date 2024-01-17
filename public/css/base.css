@@ -1,0 +1,225 @@
+[class*='__container'] {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.main {
+  flex: 1 1 auto;
+  padding-bottom: 50px;
+}
+
+/* trips */
+
+.trips-list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 50px;
+}
+.trips-list__item {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 15px 0px;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+  padding: 10px 0;
+}
+.trips-list__text {
+	text-align: center;
+}
+.trips-list__column {
+  position: relative;
+}
+.trips-list__column:not(:nth-child(3)) {
+  padding: 0 15px;
+}
+.trips-list__column:nth-child(1)::after,
+.trips-list__column:nth-child(2)::after {
+  content: '';
+  width: 6px;
+  height: 100%;
+  border-radius: 5px;
+  background-color: #b3dcfa;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.trips-list__column:nth-of-type(1) {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.trips-list__column:nth-child(3) {
+  text-align: center;
+  padding-left: 37px;
+}
+.trips-list__fullname {
+  margin-bottom: 5px;
+}
+.trips-list__age {
+}
+.trips-list__time {
+  font-size: 20px;
+  margin-bottom: 7px;
+}
+.trips-list__cities {
+  display: flex;
+  align-items: center;
+  column-gap: 3px;
+  margin-bottom: 10px;
+}
+.trips-list__city {
+}
+.trips-list__icon {
+}
+.trips-list__car {
+  font-size: 14px;
+}
+.trips-list__car:not(:last-child) {
+	margin-bottom: 10px;
+}
+.trips-list__price {
+  margin-bottom: 4px;
+  font-size: 32px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 10px;
+}
+.trips-list__price span {
+  color: #2a9ef4;
+}
+.trips-list__info {
+  font-size: 16px;
+}
+.trips-list__info:not(:last-child) {
+	margin-bottom: 14px;
+}
+.trips-list__places {
+}
+.trips-list__btn {
+  max-width: 152px;
+  padding: 12px 20px;
+  background-color: #ffe4b1;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 700;
+  justify-self: center;
+  grid-area: 2 / 3 / 3 / 4;
+  margin-left: 37px;
+}
+
+/* create trip */
+
+.modal-create-trips {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100%;
+  z-index: -1;
+}
+.modal-create-trips.active {
+	z-index: 100;
+}
+.modal-create-trips__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 0px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.6s ease 0s;
+}
+.modal-create-trips.active .modal-create-trips__overlay {
+	opacity: 1;
+	visibility: visible;
+}
+.modal-create-trips__body {
+  max-width: 671px;
+  width: 100%;
+  position: relative;
+  z-index: 100;
+  background-color: #ffe4b1;
+  padding: 67px 79px;
+}
+.modal-create-trips__inner {
+}
+.modal-create-trips__title {
+  font-size: 32px;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 55px;
+}
+.modal-create-trips__form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+}
+.modal-create-trips__label {
+  font-size: 21px;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  row-gap: 19px;
+}
+.modal-create-trips__input {
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  background-color: #fafafa;
+  padding: 5px 10px;
+}
+.modal-create-trips__btn {
+  border-radius: 40px;
+  background-color: #b3dcfa;
+  padding: 10px 25px;
+  align-self: center;
+}
+
+.modal-create-trips__close-btn {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	width: 30px;
+	height: 30px;
+	background-color: #fafafa;
+}
+
+.modal-close-btn {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	width: 30px;
+	height: 30px;
+	background-color: #fafafa;
+}
+
+/* Modal`s close btn */
+
+.modal-close-btn::after,
+.modal-close-btn::before {
+	content: "";
+	position: absolute;
+	left: calc(50% - calc(27px / 2));
+	width: 90%;
+	height: 1px;
+	background-color: #000;
+}
+.modal-close-btn::after {
+	transform: rotate(45deg);
+}
+.modal-close-btn::before {
+	transform: rotate(-45deg);
+}

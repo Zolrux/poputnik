@@ -1,0 +1,80 @@
+@import url('./fonts.css');
+@import url('./reset.css');
+@import url('./base.css');
+
+@import url('./header.css');
+
+.hero {
+  position: relative;
+}
+.hero__container {
+	position: relative;
+}
+.hero__body {
+  display: flex;
+  align-items: flex-end;
+  min-height: 393px;
+  padding: 50px 25px;
+}
+.hero__inner {
+  flex: 1 1 auto;
+  background-color: #fff;
+  padding: 24px 25px 31px;
+}
+.hero__form {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  column-gap: 35px;
+}
+.hero__label {
+  max-width: 260px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+.hero__input {
+  width: 100%;
+  height: 50px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  padding: 15px 20px 15px 41px;
+}
+.hero__input-from,
+.hero__input-to {
+	background: url('../images/icons/location.png') 11px 50% no-repeat;
+}
+.hero__input-from {
+}
+.hero__input-to {
+}
+.hero__input-date {
+}
+.hero__label-count {
+  max-width: 50px;
+}
+.hero__input-count {
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 5px 10px;
+}
+.hero__input-count::-webkit-inner-spin-button,
+.hero__input-count::-webkit-outer-spin-button {
+  appearance: none;
+}
+.hero__btn {
+	align-self: flex-end;
+	min-width: 140px;
+	padding: 15px 33px;
+	color: #fff;
+	background-color: #4CADF3;
+}
+.hero__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}

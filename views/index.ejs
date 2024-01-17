@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ua">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/style.css">
+	<title>Мій Попутник</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			<div class="header__container">
+				<div class="header__body">
+					<a href="/" class="header__logo">Мій Попутник</a>
+					<div class="header__actions">
+						<% if (role === 'driver') { %>
+							<button type="button" class="header__create-trip">
+								Створити поїздку
+							</button>
+						<% } %>
+						<a href="/profile/trips" class="header__profile">
+							<img src="images/icons/user.svg" alt="user icon">
+						</a>
+					</div>
+				</div>
+			</div>
+		</header>
+		<main class="main">
+			<section class="hero">
+				<div class="hero__container">
+					<div class="hero__body">
+						<div class="hero__inner">
+							<form action="/trips" method="GET" class="hero__form">
+								<label for="from" class="hero__label">
+									<span>Звідки</span>
+									<input type="text" name="from" id="from" class="hero__input hero__input-from">
+								</label>
+								<label for="to" class="hero__label">
+									<span>Куди</span>
+									<input type="text" name="to" id="to" class="hero__input hero__input-to">
+								</label>
+								<label for="date" class="hero__label">
+									<span>Дата</span>
+									<input type="date" name="date" id="date" class="hero__input hero__input-date">
+								</label>
+								<label for="count" class="hero__label hero__label-count">
+									<span>К-ть</span>
+									<input type="number" name="count" id="count" class="hero__input hero__input-count" min="1">
+								</label>
+								<button type="submit" class="hero__btn">Знайти</button>
+							</form>
+						</div>
+					</div>
+					<div class="hero__bg">
+						<img src="images/bg.png" alt="background hero image">
+					</div>
+				</div>
+			</section>
+		<% if (role === 'driver') { %>
+			<div class="modal-create-trips">
+				<div class="modal-create-trips__overlay">
+					<div class="modal-create-trips__body">
+						<div class="modal-create-trips__inner">
+							<h2 class="modal-create-trips__title">Створити поїздку</h2>
+							<form action="/create-trip" method="POST" class="modal-create-trips__form">
+								<label for="trips-from" class="modal-create-trips__label">
+									Звідки
+									<input type="text" name="from" id="trips-from" class="modal-create-trips__input">
+								</label>
+								<label for="trips-to" class="modal-create-trips__label">
+									Куди
+									<input type="text" name="to" id="trips-to" class="modal-create-trips__input">
+								</label>
+								<label for="trips-date" class="modal-create-trips__label">
+									Дата виїзду
+									<input type="date" name="date" id="trips-date" class="modal-create-trips__input">
+								</label>
+								<label for="trips-time" class="modal-create-trips__label">
+									Час виїзду
+									<input type="time" name="time" id="trips-time" class="modal-create-trips__input">
+								</label>
+								<label for="trips-car" class="modal-create-trips__label">
+									Машина
+									<input type="text" name="car" id="trips-car" class="modal-create-trips__input">
+								</label>
+								<label for="trips-price" class="modal-create-trips__label">
+									Вартість за 1-го пасажира
+									<input type="text" name="price" id="trips-price" class="modal-create-trips__input">
+								</label>
+								<label for="trips-max-passengers" class="modal-create-trips__label">
+									Максимальна кількість пасажирів
+									<input type="text" name="maxPassengers" id="trips-max-passengers" class="modal-create-trips__input">
+								</label>
+								<button type="submit" class="modal-create-trips__btn">Створити</button>
+							</form>
+						</div>
+						<button type="button" data-modal-create-close class="modal-create-trips__close-btn modal-close-btn"></button>
+					</div>
+				</div>
+			</div>
+		<% } %>
+		</main>
+	</div>
+	<script src="/js/script.js"></script>
+</body>
+
+</html>

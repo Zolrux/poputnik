@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/css/user-trips.css">
+	<title>Мої поїздки</title>
+</head>
+<body>
+	<div class="wrapper">
+		<header class="header">
+			<div class="header__container">
+				<div class="header__body">
+					<a href="/" class="header__logo">Мій Попутник</a>
+					<div class="header__actions">
+						<% if (role === 'driver') { %>
+							<button type="button" class="header__create-trip">
+								Створити поїздку
+							</button>
+						<% } %>
+						<a href="/profile/trips" class="header__profile">
+							<img src="/images/icons/user.svg" alt="user icon">
+						</a>
+					</div>
+				</div>
+			</div>
+		</header>
+		<main class="main">
+			<section class="driver-trips">
+				<div class="driver-trips__container">
+					<% if (role === 'driver') { %>
+						<h1 class="driver-trips__title">Мої створені поїздки</h1>
+					<% } else if (role === 'client') { %>
+						<h1 class="driver-trips__title">Мої заброньовані поїздки</h1>
+					<% } %>
+					<div class="driver-trips__body">
+						<ul class="trips__list trips__list-profile trips-list">
+							<% if (trips.length || orders.length) { %>
+							<% if (role === 'driver') { %>
+								<% trips.forEach(function(trip) { %>
+									<li class="trips-list__item">
+										<div class="trips-list__column">
+											<div class="trips-list__time"><%- trip.date_arrival %> - <%- trip.time_arrival %></div>
+											<div class="trips-list__cities">
+												<div class="trips-list__city"><%- trip.from %></div>
+												<div class="trips-list__icon">
+													<img src="/images/icons/arrow-right.svg" alt="arrow right icon">
+												</div>
+												<div class="trips-list__city"><%- trip.to %></div>
+											</div>
+											<div class="trips-list__car">Машина: <%- trip.car %></div>
+										</div>
+										<div class="trips-list__column">
+											<div class="trips-list__price"><span><%- parseInt(trip.price) %></span>UAH</div>
+											<div class="trips-list__info">за пасажира</div>
+											<div class="trips-list__info">Всього <%- trip.max_places %> місця</div>
+											<% if (trip.places_left >= 1) { %>
+												<div class="trips-list__places"><%- trip.places_left %> місця залишилось</div>
+											<% } else { %>
+												<div class="trips-list__places">не має місць</div>
+											<% } %>
+										</div>
+									</li>
+								<% }) %>
+							<% } else if (role === 'client') { %>
+								<% orders.forEach(function(order) { %>
+									<li class="trips-list__item">
+										<div class="trips-list__column">
+											<div class="trips-list__time"><%- order.dateArrivalTrip %> - <%- order.timeArrivalTrip %></div>
+											<div class="trips-list__cities">
+												<div class="trips-list__city"><%- order.Trip.dataValues.from %></div>
+												<div class="trips-list__icon">
+													<img src="/images/icons/arrow-right.svg" alt="arrow right icon">
+												</div>
+												<div class="trips-list__city"><%- order.Trip.dataValues.to %></div>
+											</div>
+											<div class="trips-list__car">Машина: <%- order.Trip.dataValues.car %></div>
+											<div class="trips-list__driver">Водій: <%- order.Trip.dataValues.User.dataValues.name %> <%- order.Trip.dataValues.User.dataValues.surname %></div>
+										</div>
+										<div class="trips-list__column">
+											<div class="trips-list__price"><span><%- parseInt(order.price) %></span>UAH</div>
+											<div class="trips-list__info">Заброньовано <%- order.places %> місця</div>
+										</div>
+									</li>
+								<% }) %>
+							<% } %>
+							<% } else { %>
+								<p align="center">Нічого не має</p>
+							<% } %>
+						</ul>
+					</div>
+				</div>
+			<% if (role === 'driver') { %>
+				<div class="modal-create-trips">
+					<div class="modal-create-trips__overlay">
+						<div class="modal-create-trips__body">
+							<div class="modal-create-trips__inner">
+								<h2 class="modal-create-trips__title">Створити поїздку</h2>
+								<form action="/create-trip" method="POST" class="modal-create-trips__form">
+									<label for="trips-from" class="modal-create-trips__label">
+										Звідки
+										<input type="text" name="from" id="trips-from" class="modal-create-trips__input">
+									</label>
+									<label for="trips-to" class="modal-create-trips__label">
+										Куди
+										<input type="text" name="to" id="trips-to" class="modal-create-trips__input">
+									</label>
+									<label for="trips-date" class="modal-create-trips__label">
+										Дата виїзду
+										<input type="date" name="date" id="trips-date" class="modal-create-trips__input">
+									</label>
+									<label for="trips-time" class="modal-create-trips__label">
+										Час виїзду
+										<input type="time" name="time" id="trips-time" class="modal-create-trips__input">
+									</label>
+									<label for="trips-car" class="modal-create-trips__label">
+										Машина
+										<input type="text" name="car" id="trips-car" class="modal-create-trips__input">
+									</label>
+									<label for="trips-price" class="modal-create-trips__label">
+										Вартість за 1-го пасажира
+										<input type="text" name="price" id="trips-price" class="modal-create-trips__input">
+									</label>
+									<label for="trips-max-passengers" class="modal-create-trips__label">
+										Максимальна кількість пасажирів
+										<input type="text" name="maxPassengers" id="trips-max-passengers" class="modal-create-trips__input">
+									</label>
+									<button type="submit" class="modal-create-trips__btn">Створити</button>
+								</form>
+							</div>
+							<button type="button" data-modal-create-close class="modal-create-trips__close-btn modal-close-btn"></button>
+						</div>
+					</div>
+				</div>
+			<% } %>
+			</section>
+		</main>
+	</div>
+	<script src="/js/script.js"></script>
+</body>
+</html>

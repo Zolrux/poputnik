@@ -1,0 +1,27 @@
+@import url('./fonts.css');
+@import url('./reset.css');
+@import url('./base.css');
+
+.header {
+	padding: 30px 0 40px;
+ }
+ .header__container {
+ }
+ .header__body {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+ }
+ .header__logo {
+	font-size: 32px;
+	font-weight: 400;
+ }
+ .header__actions {
+	display: flex;
+	align-items: center;
+	column-gap: 14px;
+ }
+ .header__create {
+ }
+ .header__profile {
+ }
